@@ -83,8 +83,10 @@ implementations to get a better idea of what to track.
 
 # Errata
 
-We'd have to figure out permissions somehow. We could use the security context
-of the pod/container, but that might get weird.
+We'd have to figure out UNIX file permissions somehow. We could use the
+security context of the pod/container, but that might get weird especially if
+we decide to "correct" permissions recursively. We could make these options in
+the CSI specific options for the PVs.
 
 # Timeline
 
