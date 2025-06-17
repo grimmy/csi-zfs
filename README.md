@@ -20,9 +20,14 @@ allow them to configure the zpool however they want and lets us focus on the
 bigger issues up front.
 
 The csi driver would be implemented by a daemon set. Configuration will, right
-now, look at node labels for the root dataset to use.
+now, look at Kubernetes node labels for the ZFS dataset to use as a parent.
+ZFS datasets will be named after the Kubernetes PV's name under that ZFS
+parent dataset.
 
-PVCs would then be created as `<root data set>/<namespace>/<pvcname>`.
+For example, if your Kubernetes PV has a name of
+`pvc-f0aff9a7-d11e-474f-b902-8c1549d743a6`, and your ZFS parent dataset is
+`tank/k8s` then the ZFS dataset for the Kubernetes PV would be named
+`tank/k8s/pvc-f0aff9a7-d11e-474f-b902-8c1549d743a6`.
 
 There will also be a headless service configured so that the csi-driver
 instance can talk to each other to figure out who has the PV and how and
