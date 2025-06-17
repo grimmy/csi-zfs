@@ -88,6 +88,8 @@ security context of the pod/container, but that might get weird especially if
 we decide to "correct" permissions recursively. We could make these options in
 the CSI specific options for the PVs.
 
+We need to deny the sharenfs and sharesmb properties.
+
 # Timeline
 
 No idea on a timeline, but this is something I've been thinking a lot about
